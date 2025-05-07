@@ -1,11 +1,12 @@
 package com.user;
-import com.actions.*;
+import com.actions.viewNilai;
 import com.login.Login;
 import java.util.Scanner;
 
 public class Mahasiswa extends User implements viewNilai{
     String username;
     String password;
+    String nim = password;
     Scanner scanner = new Scanner(System.in);
 
     public Mahasiswa(String username, String password) {
@@ -57,5 +58,21 @@ public class Mahasiswa extends User implements viewNilai{
 
     public void viewNilai() {
         // Implementasi untuk melihat nilai
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setNim(String nim) {
+        this.nim = nim;
+    }
+
+    public String getNim() {
+        return nim;
     }
 }

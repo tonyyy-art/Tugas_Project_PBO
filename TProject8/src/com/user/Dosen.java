@@ -1,13 +1,15 @@
 package com.user;
-import com.actions.*;
+import com.actions.reportNilai;
+import com.actions.Color;
 import com.login.Login;
+import com.data.Nilai;
 import java.util.Scanner;
 
 public class Dosen extends User implements reportNilai {
 
     private String username;
     private String password;
-    private String clear = Color.CLEAR;
+    private String nip = password;
     private Scanner scanner = new Scanner(System.in);
 
     public Dosen(String username, String password){
@@ -27,7 +29,6 @@ public class Dosen extends User implements reportNilai {
         Login login = new Login(inputUsername, inputPassword);
 
         if (login.login(inputUsername, inputPassword)) {
-            System.out.println(clear);
             diplayMenu();
         }else {
             System.out.println("Username atau password salah!");
@@ -70,7 +71,42 @@ public class Dosen extends User implements reportNilai {
         }
     }
 
+    public void setUsername(String username) {// Setter for username
+        this.username = username;
+    }
+
+    public void setNip(String nip) {// Setter for nip
+        this.nip = nip;
+    }
+
+    public String getNip() {// Getter for nip
+        return nip;
+    }
+
+    public String getUsername() {// 
+        return username;
+    }
+
     public void manageNilai() {
+        System.out.println("====Manage Nilai====");
+        System.out.println("------Masukkan Nilai------");
+        System.out.print("Nilai Matematika Diskrit: ");
+        int nilai1 = scanner.nextInt();
+        System.out.print("Nila PBO: ");
+        int nilai2 = scanner.nextInt();
+        System.out.print("Nilai Algoritma: ");
+        int nilai3 = scanner.nextInt();
+        System.out.print("Nilai Jaringan Komputer: ");
+        int nilai4 = scanner.nextInt();
+        System.out.print("Nilai Basis Data: ");
+        int nilai5 = scanner.nextInt();
+        System.out.print("Nilai Sistem Operasi: ");
+        int nilai6 = scanner.nextInt();
+        System.out.print("Nilai Pemrograman Web: ");
+        int nilai7 = scanner.nextInt();
+
+        Nilai nilai = new Nilai(nilai1, nilai2, nilai3, nilai4, nilai5, nilai6, nilai7);
+        System.out.println("Nilai berhasil disimpan!");
 
     }
 
