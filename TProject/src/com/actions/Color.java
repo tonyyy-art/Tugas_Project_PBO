@@ -6,4 +6,5 @@ public class Color {
     public static final String HIJAU = "\u001B[32m";
     public static final String KUNING = "\u001B[33m";
     public static final String BIRU = "\u001B[34m";
+    public static final String CLEAR = "\033[2J";
 }

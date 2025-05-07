@@ -36,6 +36,23 @@ public class Mahasiswa extends User implements viewNilai{
     @Override
     public void diplayMenu() {
         // Implementasi display menu untuk Mahasiswa
+        System.out.println("====Menu Mahasiswa====");
+        System.out.println("1. View Nilai");
+        System.out.println("2. Logout");
+        System.out.print("Pilih menu: ");
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                viewNilai();
+                break;
+            case 2:
+                System.out.println("Logging out...");
+                break;
+            default:
+                System.out.println("Pilihan tidak valid!");
+                diplayMenu();
+        }
     }
 
     public void viewNilai() {
