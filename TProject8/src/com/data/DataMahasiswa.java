@@ -39,4 +39,46 @@ public class DataMahasiswa extends Data{
 
     private BufferedReader reader = new BufferedReader(fileReader); 
 
+    public String readUsername(String inputUsername) {
+        
+        try  {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.trim().split("\\s+"); // split berdasarkan spasi
+                if (parts.length >= 3) {
+                    String readusername = parts[0] + " " + parts[1];
+                    if (readusername == inputUsername) {
+                        username = inputUsername;
+                        break; // setelah ketemu, keluar loop
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return username;
+    }
+
+    public String readPassword(String inputPassword) {
+        
+        try  {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.trim().split("\\s+"); // split berdasarkan spasi
+                if (parts.length >= 3) {
+                    String readpassword =  parts[1];
+                    if (readpassword == inputPassword) {
+                        password = inputPassword;
+                        break; // setelah ketemu, keluar loop
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return password;
+    }
+
 }
