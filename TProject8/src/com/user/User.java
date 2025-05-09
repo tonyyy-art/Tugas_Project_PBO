@@ -8,7 +8,6 @@ public abstract class User {
         this.username = username;
         this.password = password;
     }
-
-    public abstract void loginMenu();
+    
     public abstract void diplayMenu();
 }

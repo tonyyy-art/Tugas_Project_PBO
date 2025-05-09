@@ -56,7 +56,6 @@ public class Nilai implements manageNilai {
 
     @Override
     public char getGrade() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getGrade'");
     }
 }

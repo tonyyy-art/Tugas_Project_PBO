@@ -15,27 +15,11 @@ public class Mahasiswa extends User implements viewNilai{
         this.password = password;
     }
 
-    @Override
-    public void loginMenu() {
-        // Implementasi login menu untuk Mahasiswa
-        System.out.println("====Login Mahasiswa====");
-        System.out.print("Username : ");
-        String inputUsername = scanner.nextLine();
-        System.out.print("Password : ");
-        String inputPassword = scanner.nextLine();
     
-        Login login = new Login(inputUsername, inputPassword);
-
-        if (login.login(inputUsername, inputPassword)) {
-            diplayMenu();
-        }else {
-            System.out.println("Username atau password salah!");
-            System.out.println("Silahkan coba lagi!");
-        }
-    }
 
     @Override
     public void diplayMenu() {
+        
         // Implementasi display menu untuk Mahasiswa
         System.out.println("====Menu Mahasiswa====");
         System.out.println("1. View Nilai");
