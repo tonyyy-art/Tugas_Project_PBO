@@ -9,8 +9,6 @@ public class DataDosen extends Data {
     private FileWriter fileWriter2;
     private String username;
     private String password;
-    private String scanUsername;
-    private String scanPassword;
 
     public DataDosen(String username, String password) {
         this.username = username;
@@ -40,14 +38,14 @@ public class DataDosen extends Data {
 
     {
             try {
-                fileReader1 = new FileReader(getData2());
+                fileReader1 = new FileReader(getData1());
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
     }
     {
             try {
-                fileReader2 = new FileReader(getData1());
+                fileReader2 = new FileReader(getData2());
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -68,35 +66,37 @@ public class DataDosen extends Data {
 
     public String readUsername(String inputUsername) {
         try  {
-            String line;
+            reader1 = new BufferedReader(new FileReader(getData1()));
+            String line; // Baca baris pertama
             while ((line = reader1.readLine()) != null) {
-                String[] parts = line.split("\\s+"); // split berdasarkan spasi
-                if (parts.length >= 3) {
-                    String readusername = parts[0] + " " + parts[1];
-                    if (readusername.equals(inputUsername)) {
-                        this.scanUsername = inputUsername;
-                        break; // setelah ketemu, keluar loop
+                String[] parts = line.trim().split("\\s+(?=\\d+$)"); // Pisahkan sebelum angka di akhir
+                if (parts.length == 2) {
+                    if (parts[0].trim().equals(inputUsername)) {
+                        this.username = inputUsername;
+                        break;
                     }
                 }
-            }
+            } 
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return scanUsername;
+        return username;
     }
 
-    public String readPassword(String inputPassword) {
-        
-        try  {
+   public String readPassword(String inputPassword) {
+        try {
+            // Reset reader1 to the beginning of the file
+            reader1 = new BufferedReader(new FileReader(getData1()));
             String line;
             while ((line = reader1.readLine()) != null) {
-                String[] parts = line.split("\\s+"); // split berdasarkan spasi
-                if (parts.length >= 3) {
-                    String readpassword = parts[2];
-                    if (readpassword.equals(inputPassword)) {
-                        this.scanPassword = inputPassword;
-                        break; // setelah ketemu, keluar loop
+                String[] tokens = line.trim().split("\\s+");
+                if (tokens.length >= 2) {
+                    String password = tokens[tokens.length - 1]; // Ambil token terakhir sebagai password
+                    if (password.equals(inputPassword)) {
+                        this.password = inputPassword;
+                        break;
                     }
                 }
             }
@@ -104,6 +104,7 @@ public class DataDosen extends Data {
             e.printStackTrace();
         }
 
-        return scanPassword;
+        return password;
     }
 }
+ 

@@ -58,10 +58,7 @@ public class Login {
     }
     
     private boolean loginDosen(String inputUsername, String inputPassword) {
-        String storedUsername = dataDosen.readUsername(inputUsername);
-        String storedPassword = dataDosen.readPassword(inputPassword);
-        return storedUsername != null && storedUsername.equals(inputUsername) &&
-               storedPassword != null && storedPassword.equals(inputPassword);
+        return dataDosen.readUsername(inputUsername).equals(inputUsername) && dataDosen.readPassword(inputPassword).equals(inputPassword);
     }
 
     private boolean loginMahasiswa(String imputUsername, String inputPassword) {
