@@ -1,13 +1,12 @@
-import com.login.Login;;
+package com.main;
+
+import com.login.Login;
 
 public class LoginSystem {
     public static void main(String[] args) {
         
-        // Create an instance of the Login class
         Login login = new Login();
 
         login.LoginMenu();
-
-        
     }
 }

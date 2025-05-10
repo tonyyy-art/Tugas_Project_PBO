@@ -65,7 +65,7 @@ public class DataMahasiswa extends Data{
         try  {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.trim().split("\\s+"); // split berdasarkan spasi
+                String[] parts = line.split(" "); // split berdasarkan spasi
                 if (parts.length >= 3) {
                     String readpassword =  parts[1];
                     if (readpassword == inputPassword) {

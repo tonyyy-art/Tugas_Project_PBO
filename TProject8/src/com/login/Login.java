@@ -6,7 +6,7 @@ import com.user.*;
 
 public class Login {
 
-    private DataDosen dataDosen = new DataDosen("0", "0");
+    private DataDosen dataDosen = new DataDosen();
     private DataMahasiswa dataMahasiswa = new DataMahasiswa("0", "0", 0, 0, 0, 0, 0, 0, 0, 0);
     Scanner scanner = new Scanner(System.in);
 

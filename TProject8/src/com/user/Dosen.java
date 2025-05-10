@@ -4,13 +4,15 @@ import com.actions.Color;
 import com.login.Login;
 import com.data.Nilai;
 import java.util.Scanner;
+import com.data.DataDosen;
 
 public class Dosen extends User implements reportNilai {
 
     private String username;
     private String password;
-    private String nip = password;
+    private String nip;
     private Scanner scanner = new Scanner(System.in);
+    private DataDosen dataDosen;
 
     public Dosen(String username, String password){
         super(username, password);
@@ -20,7 +22,10 @@ public class Dosen extends User implements reportNilai {
 
     @Override
     public void diplayMenu() {
+        dataDosen = new DataDosen();
         System.out.println("====Menu Dosen====");
+        System.out.println("Nama : " + username);
+        System.out.println("NIP : " + password);
         System.out.println("1. Manage Nilai");
         System.out.println("2. View Nilai");
         System.out.println("3. Ubah Nilai");
@@ -60,6 +65,7 @@ public class Dosen extends User implements reportNilai {
     }
 
     public String getNip() {// Getter for nip
+        nip = password;
         return nip;
     }
 

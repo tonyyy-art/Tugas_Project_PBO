@@ -1,6 +1,7 @@
 package com.data;
 
 import java.io.*;
+import java.util.Arrays;
 
 public class DataDosen extends Data {
     
@@ -10,11 +11,6 @@ public class DataDosen extends Data {
     private String username;
     private String password;
 
-    public DataDosen(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-    
     {
         try {
             fileWriter1 = new FileWriter(getData1(), true);
@@ -69,12 +65,12 @@ public class DataDosen extends Data {
             reader1 = new BufferedReader(new FileReader(getData1()));
             String line; // Baca baris pertama
             while ((line = reader1.readLine()) != null) {
-                String[] parts = line.trim().split("\\s+(?=\\d+$)"); // Pisahkan sebelum angka di akhir
-                if (parts.length == 2) {
-                    if (parts[0].trim().equals(inputUsername)) {
-                        this.username = inputUsername;
-                        break;
-                    }
+                String[] parts = line.split(" "); // 
+                String readUsername = String.join(" ", Arrays.copyOfRange(parts, 0, parts.length - 1));    
+                if (readUsername.equals(inputUsername)) {
+                    this.username = inputUsername;
+                    break; // setelah ketemu, keluar loop
+                    
                 }
             } 
             
@@ -91,19 +87,27 @@ public class DataDosen extends Data {
             reader1 = new BufferedReader(new FileReader(getData1()));
             String line;
             while ((line = reader1.readLine()) != null) {
-                String[] tokens = line.trim().split("\\s+");
-                if (tokens.length >= 2) {
-                    String password = tokens[tokens.length - 1]; // Ambil token terakhir sebagai password
-                    if (password.equals(inputPassword)) {
-                        this.password = inputPassword;
-                        break;
-                    }
+                String[] parts = line.split(" ");
+                String readPassword = parts[parts.length - 1];    
+                if (readPassword.equals(inputPassword)) {
+                    this.password = inputPassword;
+                    break; // setelah ketemu, keluar loop
+                    
                 }
+            
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        return password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getNip() {
         return password;
     }
 }
